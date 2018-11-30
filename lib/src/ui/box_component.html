@@ -1,0 +1,48 @@
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label for="x">X&nbsp;*</label>
+                <input type="number"
+                       class="form-control"
+                       id="x"
+                       #x="ngForm"
+                       required [(ngModel)]="model.x"
+                       ngControl="x"
+                       [class.is-valid]="x.valid"
+                       [class.is-invalid]="!x.valid">
+            </div>
+            <div class="col-auto">
+                <label for="y">Y&nbsp;*</label>
+                <input type="number"
+                       class="form-control"
+                       id="y"
+                       #y="ngForm"
+                       [(ngModel)]="model.y"
+                       ngControl="y"
+                       [class.is-valid]="y.valid"
+                       [class.is-invalid]="!y.valid">
+            </div>
+            <div class="col-auto">
+                <label for="z">Z&nbsp;*</label>
+                <input type="number"
+                       class="form-control"
+                       id="z"
+                       #z="ngForm"
+                       [(ngModel)]="model.z"
+                       ngControl="z"
+                       [class.is-valid]="z.valid"
+                       [class.is-invalid]="!z.valid">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <small class="col text-right">*&nbsp;Required</small>
+        </div>
+    </form>
+    <svg [innerHtml]="boxsvg" width="600" height="600">
+    </svg>
+</div>
