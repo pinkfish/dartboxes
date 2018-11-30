@@ -42,6 +42,13 @@ class BoxComponent implements OnInit {
 
   SafeHtml boxsvg;
 
+  List<String> tops = TopSide.values.map((TopSide t) => t.toString()).toList();
+
+  List<String> lids = LidType.values.map((LidType l) => l.toString()).toList();
+
+  String currentLid;
+  String currentTop;
+
   BoxComponent(this.sanitize);
 
   @override
@@ -50,6 +57,12 @@ class BoxComponent implements OnInit {
   }
 
   void renderBox() {
+    model.topSide = TopSide.values.firstWhere(
+        (TopSide t) => t.toString() == currentTop,
+        orElse: () => TopSide.Open);
+    model.hingedLid = LidType.values.firstWhere(
+        (LidType t) => t.toString() == currentLid,
+        orElse: () => LidType.PressFit);
     SideType top = SideType.Fingers;
     switch (model.topSide) {
       case TopSide.Open:
@@ -59,6 +72,17 @@ class BoxComponent implements OnInit {
         break;
       case TopSide.Lid:
         top = SideType.Lid;
+        break;
+    }
+    switch (model.hingedLid) {
+      case LidType.PressFit:
+        top = SideType.Fingers;
+        break;
+      case LidType.Cap:
+        top = SideType.Lid;
+        break;
+      case LidType.Hinged:
+        top = SideType.Fingers;
         break;
     }
     settings.burnCorrection = model.burnCorrection;

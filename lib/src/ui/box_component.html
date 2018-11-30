@@ -36,6 +36,21 @@
             </div>
         </div>
 
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label for="top">Top</label>
+                <select class="form-control" id="top" required [(ngModel)]="currentTop">
+                    <option *ngFor="let top of tops" [value]="top">{{top}}</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <label for="top">Lid</label>
+                <select class="form-control" id="lid" required [(ngModel)]="currentLid">
+                    <option *ngFor="let lid of lids" [value]="lid">{{lid}}</option>
+                </select>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Submit</button>
